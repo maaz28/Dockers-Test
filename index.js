@@ -9,13 +9,9 @@ const client = redis.createClient({
     // by default redis server runs on port 6379
 })
 
-client.set('visits', 0)
 
 app.get('/', (req, res) => {
-    client.get('visits', (err, visits) => {
-        res.send('Total visits: ' + visits)
-        client.set('visits', Number(visits) + 1)
-    })
+ res.send('working')
 })
 
 app.listen(8080, () => {
