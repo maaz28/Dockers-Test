@@ -1,0 +1,26 @@
+version: '3'
+services: 
+    redis-server:
+        image: 'redis:latest'
+    nginx:
+        restart: always
+        build: 
+            dockerfile: Dockerfile
+            context: ./nginx
+        ports: 
+            - '8080:80'
+    api:
+        build: 
+            dockerfile: Dockerfile
+            context: ./server
+        volumes: 
+            - /app/node_modules
+            - ./server:/app
+    client:
+        build: 
+            dockerfile: Dockerfile
+            context: ./client
+        volumes: 
+            - /app/node_modules
+            - ./client:/app
+    
