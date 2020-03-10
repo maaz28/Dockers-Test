@@ -1,0 +1,12 @@
+version: "3"
+services:
+  client:
+    build: ./client
+  api:
+    build: ./server
+  redis-server:
+    image: redis
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
